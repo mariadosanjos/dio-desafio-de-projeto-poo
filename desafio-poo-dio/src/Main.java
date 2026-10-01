@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 public class Main {
@@ -22,9 +24,35 @@ public class Main {
         mentoria.setDescricao("Descrição da Mentoria de Java");
         mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição do Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devMaria = new Dev();
+        devMaria.setNome("Maria");
+        devMaria.inscreverBootcamp(bootcamp);
+        System.out.println("\nConteúdos inscritos de Maria: " + devMaria.getConteudosInscritos());
+        devMaria.progredir();
+        devMaria.progredir();
+        System.out.println("--");
+        System.out.println("Conteúdos inscritos de Maria após progredir: " + devMaria.getConteudosInscritos());
+        System.out.println("Conteúdos concluídos de Maria: " + devMaria.getConteudosConcluidos());
+        System.out.println("XP de Maria: " + devMaria.calcularTotalXp());
+
+        Dev devJorge = new Dev();
+        devJorge.setNome("Jorge");
+        devJorge.inscreverBootcamp(bootcamp);
+        System.out.println("\nConteúdos inscritos de Jorge: " + devJorge.getConteudosInscritos());
+        devJorge.progredir();
+        devJorge.progredir();
+        devJorge.progredir();
+        System.out.println("--");
+        System.out.println("Conteúdos inscritos de Jorge após progredir: " + devJorge.getConteudosInscritos());
+        System.out.println("Conteúdos concluídos de Jorge: " + devJorge.getConteudosConcluidos());
+        System.out.println("XP de Jorge: " + devJorge.calcularTotalXp());
         
     }
 
